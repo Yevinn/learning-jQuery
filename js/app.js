@@ -1,3 +1,3 @@
-function myCode() {
-	$(".warning").hide().show("slow");
-}
+$(function(){
+  $(".warning").hide().show("slow");
+});
