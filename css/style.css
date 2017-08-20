@@ -41,4 +41,13 @@ a {
 
 #overlay img{
   margin-top: 10%;
+  margin-bottom: -4px;
+}
+#overlay p{
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding-top: 12px;
+  height: 40px;
 }
