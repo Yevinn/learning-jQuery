@@ -15,12 +15,16 @@ $("#menu a").each(function(){
   $option.text($anchor.text());
   $select.append($option);
 });
-
-
-
-
-//Create button to click to go to select's location
+//Create button
+var $button = $("<button>Go</button>");
+$("#menu").append($button);
 //Bind click to button
+$button.click(function(){
+  // Go to select's location
+  window.location = $select.val();
+});
+//Create button to click to go to select's location
+
   // Go to select's location
 //Modify CSS to hide links on small resoltuions and show button and select
   //Also hides select and button on large screens.
