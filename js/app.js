@@ -20,15 +20,8 @@ if($anchor.parent().hasClass("selected")){
   $option.text($anchor.text());
   $select.append($option);
 });
-//Create button
-var $button = $("<button>Go</button>");
-$("#menu").append($button);
-//Bind click to button
-$button.click(function(){
-  // Go to select's location
+
+//Bind click tolistener to the select
+$select.change(function(){
   window.location = $select.val();
 });
-
-
-
-//Deal with selected options depending on current page
