@@ -1,37 +1,38 @@
-//Problem: User when clicking on image goes to a dead end
-//Solution: Create an lightbox with the large image
+//Problem: It look gross in smaller browser widths and small devices
+//Solution: To hide the text links and swap them out with a more appropriate navigation
 
-var $overlay = $('<div id="overlay"></div>');
-var $image = $("<img>");
-var $caption = $('<p></p>');
-//An image to overlay
-$overlay.append($image);
-  //A caption to overlay
-  $overlay.append($caption);
+//Create a select and append to #menu
+var $select = $("<select></select>");
+$("#menu").append($select);
 
-$("body").append($overlay);
-  //An image
+//Cycle over menu links
+$("#menu a").each(function(){
+  var $anchor = $(this);
+  //Create an option
+  var $option = $("<option></option>");
 
+  //Deal with selected options depending on current page
+  if($anchor.parent().hasClass("selected")) {
+    $option.prop("selected", true);
+  }
+  //option's value is the href
+  $option.val($anchor.attr("href"));
+  //option's text is the text of link
+  $option.text($anchor.text());
+  //append option to select
+  $select.append($option);
+});
 
-
-//1- Capture the click even on a link to an image
-$("#imageGallery a").click(function(){
-  event.preventDefault();
-  var href = $(this).attr("href");
-
-  //Update overlay with the image link
-  $image.attr("src", href);
-  //Show the overlay.
-$overlay.show();
-  //Get Childs Alt atribute and set caption
-var captionText = $(this).children("img").attr('alt');
-$caption.text(captionText);
-
+//Bind change listener to the select
+$select.change(function(){
+  //Go to select's location
+  window.location = $select.val();
 });
 
 
-//3 - When overlay is clicked
-$overlay.click(function(){
-  $overlay.hide();
-});
-  //3.1 - Hide the overlay
+
+
+
+
+
+
