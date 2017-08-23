@@ -1,26 +1,36 @@
 //Problem: Hints are shown even when form is valid
 //Solution: Hide and show them at appropriate times
+var $password = $("#password");
+var $confirmPassword = $("#confirm_password");
+
 
 //Hide Hints
 $("form span").hide();
 
 function passwordEvent(){
-  if($(this).val().length > 8){
+  if($password.val().length > 7){
       //Hide hint if valid
-      $(this).next().hide();
+      $password.next().hide();
   } else{
       //else show hint
-      $(this).next().show();
+      $password.next().show();
+  }
+}
+
+function confirmPasswordEvent(){
+  if($password.val() === $confirmPassword.val()){
+    $confirmPassword.next().hide();
+  } else{
+    $confirmPassword.next().show();
   }
 }
 
 //When even happens on password input
-$("#password").focus(passwordEvent).keyup(passwordEvent);
-  //Find out if password is valid
-    //Hide hint if valid
-    //else show hint
+$password.focus(passwordEvent).keyup(passwordEvent).focus(confirmPasswordEvent).keyup(confirmPasswordEvent);;
+
 
 //When event happens on confirmation input
+$confirmPassword.focus(confirmPasswordEvent).keyup(confirmPasswordEvent);
   //Find out if password and confirmation match
     //Hide hint if matched
     //Show hint if not (else)
